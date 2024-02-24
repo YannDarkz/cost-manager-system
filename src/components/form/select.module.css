@@ -1,0 +1,31 @@
+.formControl {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+}
+
+.formControl label {
+    margin-bottom: 0.6rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.formControl select {
+    padding: 0.6rem;
+    border-radius: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.empty {
+    border: 1px solid red !important;
+    color: red !important;
+
+}
+
+.error_msg {
+    color: red !important;
+    letter-spacing: 4px;
+}
+

@@ -1,0 +1,12 @@
+.projects_container {
+    padding: 2rem;
+    width: 100%;
+    background-color: #d1d1d1;
+}
+
+.container_tittle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3vh;
+
+}

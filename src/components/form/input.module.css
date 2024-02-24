@@ -1,0 +1,37 @@
+.formControl {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+}
+
+.formControl label {
+    margin-bottom: 0.6rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.formControl input {
+    padding: 0.6rem;
+    border-radius: 0;
+    border: none;
+}
+
+.formControl input::placeholder{
+    color: #7b7b7b;
+    font-size: 1.1rem;
+}
+
+.empty input {
+    border:1px solid red;
+}
+
+.empty input::placeholder {
+    color: red !important;
+}
+
+.error_msg {
+    color: red !important;
+    letter-spacing: 4px;
+    font-size: 0.9rem !important;
+}
