@@ -2,18 +2,14 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-
-    
-    
 }
 
 .minHeight{
-    min-height: 70vh;
-    
+    min-height: 75vh;
 }
 
 .border{
-    border: 20px pink double;
+    border: 2px pink double;
 }
 
 .start{
@@ -29,3 +25,4 @@
     flex-direction: column;
     align-items: center;
 }
+

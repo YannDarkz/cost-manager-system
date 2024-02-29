@@ -1,0 +1,35 @@
+.company_container {
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #d1d1d1;
+    
+}
+
+.company_container h1 {
+    background-color: black;
+    min-width: 20vw;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: .7rem;
+    color: #ffbb33;
+}
+
+.company_container p {
+    color: #7b7b7b;
+    text-shadow: 2px 2px 5px;
+    font-size: 1.3rem;
+
+}
+
+.company_container p .copy_strong {
+    font-size: 1rem;
+    position: relative;
+    bottom: 0.7vh;
+
+
+}
+

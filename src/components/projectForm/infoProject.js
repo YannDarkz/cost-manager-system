@@ -1,6 +1,7 @@
 import styles from '../pages/project.module.css'
 
-const ProjectInfo = ({category, budget, costs }) => {
+const ProjectInfo = ({category, budget, costs, totalAvailable }) => {
+
 
     return (
         <div className={styles.project_info}>
@@ -8,10 +9,13 @@ const ProjectInfo = ({category, budget, costs }) => {
                 <span>Categoria: </span> {category}
             </p>    
             <p>
-                <span>Total Orçamento: </span> R$ - {budget}
+                <span>Total Orçamento: </span> R$: {budget}
             </p>
             <p>
-                <span>Total Ultilizado: </span> R$ - {costs}
+                <span>Total Ultilizado: </span> R$: {costs}
+            </p>
+            <p>
+                <span>Disponível: </span> R$: {totalAvailable}
             </p>
         </div>
     )

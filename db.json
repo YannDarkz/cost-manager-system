@@ -1,51 +1,32 @@
 {
   "projects": [
     {
-      "id": "c9a9",
+      "id": "3c5a",
       "name": "programador",
-      "budget": "1800",
+      "budget": "3000",
       "category": {
-        "id": "2",
-        "name": "Desenvolvimento"
+        "id": "3",
+        "name": "Design"
       },
-      "cost": 450,
+      "cost": 1000,
       "services": [
         {
-          "name": "ss",
-          "cost": "11",
-          "description": "euu",
-          "id": "6afb3446-6027-4983-9278-a6efaaf05709"
-        },
-        {
-          "name": "www",
-          "cost": "209",
-          "description": "euu",
-          "id": "e9f73700-ed18-4973-9e2c-aca96a62f401"
+          "name": "programador",
+          "cost": "1000",
+          "id": "5bff4c51-9ede-413b-9b43-ddce5235a494"
         }
       ]
     },
     {
-      "id": "0d80",
-      "name": "PROJETINNN",
-      "budget": "333",
+      "id": "cb9c",
+      "name": "programador",
+      "budget": "300",
       "category": {
-        "id": "2",
-        "name": "Desenvolvimento"
+        "id": "3",
+        "name": "Design"
       },
-      "cost": 246,
-      "services": [
-        {
-          "name": "recebi ",
-          "cost": "233",
-          "description": "ti",
-          "id": "46ce5fa8-8a70-4a87-878a-504b591c7946"
-        },
-        {
-          "name": "ss",
-          "cost": "13",
-          "id": "1bdf8154-9713-45b5-8c79-88d9d26de1d7"
-        }
-      ]
+      "cost": 0,
+      "services": []
     }
   ],
   "categories": [

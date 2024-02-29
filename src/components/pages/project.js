@@ -123,7 +123,36 @@ const Project = () => {
 
     }
 
-    const removeService = () => {
+    const removeService = (id, cost) => {
+
+        const serviceUpdated = project.services.filter(
+            (service) => service.id !== id
+        )
+
+        const projectUpdated = project
+
+        projectUpdated.services = serviceUpdated
+        projectUpdated.cost = parseFloat(projectUpdated.cost) - parseFloat(cost)
+
+        fetch(`http://localhost:5000/projects/${projectUpdated.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(projectUpdated)
+        }).then(resp => resp.json())
+        .then((data) => {
+            setProject(projectUpdated)
+            setServices(serviceUpdated)
+            setMessage('serviço removido com sucesso!')
+            setType('sucess')
+
+            setTimeout(() => {
+                setMessage('')
+            }, 2500)
+        })
+        .catch((erro) => console.log(erro))
+
 
     }
 
@@ -157,7 +186,8 @@ const Project = () => {
                                 <ProjectInfo
                                     category={project.category.name}
                                     budget={Number(project.budget).toFixed(2)}
-                                    costs={project.cost.toFixed(2)} />
+                                    costs={project.cost.toFixed(2)} 
+                                    totalAvailable={Number(project.budget - project.cost).toFixed(2) }/>
                             ) : (
                                 <FormProject btnText='Concluir Edição' handleSubmit={editProject} projectData={project} />
                             )}

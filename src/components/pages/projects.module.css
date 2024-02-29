@@ -10,3 +10,12 @@
     margin-bottom: 3vh;
 
 }
+
+@media (max-width: 400px){
+    .container_tittle h1 {
+        font-size: 1.5rem;
+        
+    
+    }
+
+}

@@ -24,3 +24,17 @@
 .item a:hover{
     color: #ffbb33;
 }
+
+@media (max-width:360px) {
+
+    .navbar img {
+        width: 13vw;
+    }
+
+    .item a{
+        font-size: 1rem;
+    }
+   
+
+
+}

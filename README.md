@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Sistema Gerenciador de Projetos "Costs"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Método de renderização && Inicialização do banco de dados
 
-## Available Scripts
+* 1.0 - Para inicializar o site, vamos ter primeiramente que clonar o projeto no Github. 
+Link a seguir: https://github.com/YannDarkz/cost.git
+- 1.1 - É preciso ter o node js e npm instalado em sua máquina para rodar o projeto.
 
-In the project directory, you can run:
+# Comandos Necessários
 
-### `npm start`
+*  1.2 - Depois  de baixar ou clonar o repositório, abra o terminal na pasta  raiz do projeto / ou abra um terminal do Vscode e digite o comando -> 
+" npm install "  (para baixar as dependências);
+logo em seguida, abra outro terminal  e execute: 
+" npm run backend "  (para iniciar o servidor localhost:5000).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## npm install 
+O comando `npm install` é responsável por baixar todas as dependências necessárias para o funcionamento da aplicação.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## npm run backend
+O comando `npm run backend` é responsável por executar o banco de dados do projeto.
 
-### `npm test`
+# Guia do Usuário Costa
+### Página Home
+* A página inicial, terá um botão centralizado para redireciona-lo mais rápidamente  para a tela de criação de projetos.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Página Criar Novo Projeto
+* Nesta  página você pode criar um novo projeto preenchendo os campos obrigatórios como nome, descrição do projeto e categoria.
 
-### `npm run build`
+### Página dos Projetos
+* Ná pagina de Projetos, é onde você pode visualisar seus projetos que foram criados e gerenciar  eles.
+* Para editar o projeto, temos dois botões iniciais:
+* Button1 -  para editar os detalhes do projeto e adicionar serviços.
+* Button2 - Para Excluir o projeto criado
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Página de Edição do Projeto
+* Aqui, na primeira sessão, você poderá não só, editar todos os campos do seu Projeto, como: Nome, Orçamento, Categoria, como também adionar novos serviços.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Para adicionar serviços é preciso clicar/pressionar o Botão: "adicionar serviços". Feito isso, aparecerá um formulário para ser preenchido com os dados do novo serviço, como: Nome, Custo do serviço, descrição(Opcional).
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Tecnologias Utilizadas
+* HTML
+* CSS 
+* JavaScript
+* React.JS   
+* NodeJS

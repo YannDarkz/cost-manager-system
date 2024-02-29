@@ -1,13 +1,10 @@
 .project_card {
-    /* display: flex;
-    flex-direction: column;
-    flex-wrap: wrap; */
     padding: 1.3rem;
     border: 1px solid #7a7a7a;
     border-radius: 5px;
     width: 60%;
     margin: 0.5%;
-    /* height:  39%; */
+
 }
 
 .project_card h4 {
@@ -28,8 +25,8 @@
 }
 
 .project_card p.description {
-  background-color: #a0e7e5;
-    
+    background-color: #a0e7e5;
+
 }
 
 .category_text {
@@ -87,9 +84,35 @@
 .project_card_actions a:hover,
 .project_card_actions button:hover {
     background-color: #222;
-    color: #ffbb33 ;
+    color: #ffbb33;
 }
 
 .project_card_actions svg {
-    margin-right: 0.5rem;
+    margin-right: .5rem;
+}
+
+@media (max-width:400px) {
+
+    .project_card h4 {
+        margin-bottom: 1.3rem;
+        font-size: 1.1rem;
+        text-align: center;
+       
+    }
+
+    .project_card_actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .project_card_actions a,
+    .project_card_actions button {
+        width: 35vw;
+        margin: 0;
+    }
+
+    .project_card_actions svg {
+        margin-right: 1rem;
+    }
+
 }

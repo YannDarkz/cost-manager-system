@@ -5,27 +5,28 @@ import { useState } from 'react'
 import styles from '../projectForm/projectForm.module.css'
 
 import Input from '../form/input'
+import TextArea from '../form/textArea'
 import SubmitButton from '../form/submitBtn'
 
 const ServiceForm = ({ textBtn, handleSubmit, projectData }) => {
 
-    const [service, setService] = useState({ })
+    const [service, setService] = useState({})
 
-    const submit = (e) =>{
+    const submit = (e) => {
         e.preventDefault()
         projectData.services.push(service)
         handleSubmit(projectData)
     }
 
     const handleChange = (e) => {
-        const {name, value } = e.target
-        setService({...service, [name]: value})
+        const { name, value } = e.target
+        setService({ ...service, [name]: value })
 
     }
 
     return (
         <form onSubmit={submit} className={styles.form}>
-            <Input 
+            <Input
                 required={true}
                 text="Nome do serviço"
                 type="text"
@@ -33,7 +34,7 @@ const ServiceForm = ({ textBtn, handleSubmit, projectData }) => {
                 placeHolder="Insra o nome do serviço *"
                 handleOnChange={handleChange}
             />
-            <Input 
+            <Input
                 required={true}
                 text="Custo do serviço"
                 type="number"
@@ -41,13 +42,12 @@ const ServiceForm = ({ textBtn, handleSubmit, projectData }) => {
                 placeHolder="Insra o custo do serviço *"
                 handleOnChange={handleChange}
             />
-            <Input 
-                text="Descriçao do serviço"
-                type="text"
+
+            <TextArea
+                text="Descriação do Serviço"
                 name="description"
-                placeHolder="Insra a descrição (Opcional)"
-                handleOnChange={handleChange}
-            />
+                placeHolder="Insra o custo do serviço opcional"
+                handleOnChange={handleChange} />
             <SubmitButton text={textBtn} />
         </form>
     )

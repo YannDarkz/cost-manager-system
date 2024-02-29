@@ -9,7 +9,6 @@ const Input = ({ type, text, name, placeHolder, handleOnChange, value, required 
     const handleBlur = (event) => {
         if (required && event.target.value.trim() === '') {
             setEmpty(true);
-            console.log('bemaqui')
             setTimeout(() => {
                 setEmpty(undefined)
             },1000)

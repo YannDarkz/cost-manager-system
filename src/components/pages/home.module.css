@@ -29,3 +29,17 @@
     margin: 2rem 0;
 }
 
+@media (max-width: 440px) {
+    .homeContainer img {
+        width: 25rem;
+        margin: 2rem 0;
+    }
+}
+
+@media (max-width: 330px) {
+    .homeContainer img {
+        width: 23rem;
+        margin: 2rem 0;
+    }
+}
+

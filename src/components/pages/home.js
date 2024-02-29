@@ -10,7 +10,6 @@ const Home = () => {
             <p>Comece a gerenciar seus projetos agora mesmo!</p>
             <LinkButton to="/newproject" text="Criar Projeto" />
             <img src={saving} alt="Costs" />
-
         </section>
     )
 }
