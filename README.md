@@ -19,7 +19,7 @@ O comando `npm install` é responsável por baixar todas as dependências necess
 ## npm run backend
 O comando `npm run backend` é responsável por executar o banco de dados do projeto.
 
-# Guia do Usuário Costa
+# Guia do Usuário Costs
 ### Página Home
 * A página inicial, terá um botão centralizado para redireciona-lo mais rápidamente  para a tela de criação de projetos.
 
@@ -44,3 +44,29 @@ O comando `npm run backend` é responsável por executar o banco de dados do pro
 * JavaScript
 * React.JS   
 * NodeJS
+
+
+### Navegação =>
+
+*  Início Home_Page
+[
+    
+    <img src="./src/img/home_page.png" alt= "Pagina Inicial"/>
+
+]
+*  Adicionar Novo Projeto
+
+[
+    <img src="./src/img/add_project.png" alt="add Project" />
+]
+
+* Projetos
+
+[
+    <img src="./src/img/projects.png" alt="Projects" />
+]
+
+* Editar Projeto
+[
+    <img src="./src/img/edit_project.png" alt="edit Project" />
+]

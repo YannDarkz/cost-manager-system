@@ -1,29 +1,12 @@
 {
   "projects": [
     {
-      "id": "3c5a",
-      "name": "programador",
-      "budget": "3000",
+      "id": "0392",
+      "name": "Blog",
+      "budget": "5000",
       "category": {
-        "id": "3",
-        "name": "Design"
-      },
-      "cost": 1000,
-      "services": [
-        {
-          "name": "programador",
-          "cost": "1000",
-          "id": "5bff4c51-9ede-413b-9b43-ddce5235a494"
-        }
-      ]
-    },
-    {
-      "id": "cb9c",
-      "name": "programador",
-      "budget": "300",
-      "category": {
-        "id": "3",
-        "name": "Design"
+        "id": "2",
+        "name": "Desenvolvimento"
       },
       "cost": 0,
       "services": []

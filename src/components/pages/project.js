@@ -22,6 +22,8 @@ const Project = () => {
     const [showServiceForm, setShowServiceForm] = useState(false)
     const [message, setMessage] = useState(false)
     const [type, setType] = useState()
+    
+
     useEffect(() => {
         setTimeout(() => {
             fetch(`http://localhost:5000/projects/${id}`, {
@@ -40,8 +42,6 @@ const Project = () => {
     }, [id])
 
     const editProject = (project) => {
-
-
         if (project.budget < project.cost) {
 
             setMessage('O orçamento não pode ser menor que o custo do projeto')
@@ -62,6 +62,7 @@ const Project = () => {
             .then((resp) => resp.json())
             .then((data) => {
                 setProject(data)
+                setServices(data.services)
                 setShowProjectForm(!showProjectForm)
                 setMessage('Projeto Atualizado!!!')
                 setType('sucess')
@@ -109,19 +110,17 @@ const Project = () => {
             body: JSON.stringify(project)
         }).then((resp) => resp.json())
             .then((data) => {
-                console.log("ele", data)
                 setShowServiceForm(!showServiceForm)
                 setMessage('Serviço Adicionado com sucesso')
                 setType('sucess')
 
                 setTimeout(() =>{
-                    setMessage('')
+                    setMessage(false)
                 },2500)
             })
             .catch((err) => console.log(err))
-
-
     }
+    
 
     const removeService = (id, cost) => {
 
@@ -148,7 +147,7 @@ const Project = () => {
             setType('sucess')
 
             setTimeout(() => {
-                setMessage('')
+                setMessage(false)
             }, 2500)
         })
         .catch((erro) => console.log(erro))
@@ -219,6 +218,7 @@ const Project = () => {
                                         key={service.id}
                                         handleRemove={removeService}
                                     />
+                                    
                                 ))
                             )}
                         </Container>

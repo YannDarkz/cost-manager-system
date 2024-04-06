@@ -25,8 +25,6 @@ const FormProject = ({ btnText, handleSubmit, projectData }) => {
 
     const submit = (e) => {
         e.preventDefault()
-        console.log('submit() foi chamado');
-
         const requiredFields = document.querySelectorAll('[required]');
         console.log(requiredFields)
         let formIsValid = true;
