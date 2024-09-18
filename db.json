@@ -1,27 +1,9 @@
 {
   "projects": [
     {
-      "id": "713b",
-      "name": "desenvolvimento",
-      "budget": "3000",
-      "category": {
-        "id": "4",
-        "name": "Planejamento"
-      },
-      "cost": 2000,
-      "services": [
-        {
-          "name": "Contratar Funcionario de Design",
-          "cost": "2000",
-          "description": "Responsavel pelo design",
-          "id": "90062381-0e59-4679-baa8-768fb2da8b72"
-        }
-      ]
-    },
-    {
-      "id": "b9fb",
-      "name": "ian",
-      "budget": "10",
+      "id": "afde",
+      "name": "Blog",
+      "budget": "12",
       "category": {
         "id": "1",
         "name": "Infra"
