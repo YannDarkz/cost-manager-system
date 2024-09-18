@@ -1,4 +1,6 @@
 import jsonServer from 'json-server'
+import cors from 'cors'
+
 
 const server = jsonServer.create();
 const router = jsonServer.router('db.json');
