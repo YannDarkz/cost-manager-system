@@ -23,7 +23,6 @@ const NewProject = () => {
             .then((data) => {
                 console.log(data)
 
-                //redirect
                 navigate('/projects', {state :{ message: 'Projeto Enviado com Sucesso!' } })
 
             })

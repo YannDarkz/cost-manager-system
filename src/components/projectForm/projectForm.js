@@ -39,6 +39,9 @@ const FormProject = ({ btnText, handleSubmit, projectData }) => {
             return;
         }
 
+        console.log("p", project);
+        
+
      
         handleSubmit(project)
     }
