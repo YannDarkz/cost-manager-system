@@ -20,13 +20,13 @@ const Project = () => {
     const [services, setServices] = useState([])
     const [showProjectForm, setShowProjectForm] = useState(false)
     const [showServiceForm, setShowServiceForm] = useState(false)
-    const [message, setMessage] = useState(false)
+    const [message, setMessage] = useState('')
     const [type, setType] = useState()
     
 
     useEffect(() => {
         setTimeout(() => {
-            fetch(`http://localhost:5000/projects/${id}`, {
+            fetch(`https://api-server-costs.vercel.app/projects/${id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ const Project = () => {
             return false
         }
 
-        fetch(`http://localhost:5000/projects/${project.id}`, {
+        fetch(`https://api-server-costs.vercel.app/projects/${project.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -71,7 +71,7 @@ const Project = () => {
                     setMessage(false)
                 }, 2500)
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err, "errinho"))
     }
 
     const createService = (project) => {
@@ -102,7 +102,7 @@ const Project = () => {
         project.cost = newCost
 
         // update project
-        fetch(`http://localhost:5000/projects/${project.id}`, {
+        fetch(`https://api-server-costs.vercel.app/projects/${project.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -133,7 +133,7 @@ const Project = () => {
         projectUpdated.services = serviceUpdated
         projectUpdated.cost = parseFloat(projectUpdated.cost) - parseFloat(cost)
 
-        fetch(`http://localhost:5000/projects/${projectUpdated.id}`, {
+        fetch(`https://api-server-costs.vercel.app/projects/${projectUpdated.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

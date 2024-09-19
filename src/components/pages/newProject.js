@@ -12,7 +12,7 @@ const NewProject = () => {
         project.cost = 0
         project.services = []
 
-        fetch('http://localhost:5000/projects', {
+        fetch('https://api-server-costs.vercel.app/projects', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
