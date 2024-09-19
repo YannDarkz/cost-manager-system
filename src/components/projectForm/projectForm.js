@@ -10,7 +10,7 @@ const FormProject = ({ btnText, handleSubmit, projectData }) => {
     const [categories, setCategories] = useState([])
     const [project, setProject] = useState(projectData || {})
     useEffect(() => {
-        fetch('http://localhost:5000/categories', {
+        fetch('https://api-server-costs.vercel.app/categories', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ const FormProject = ({ btnText, handleSubmit, projectData }) => {
         let formIsValid = true;
         requiredFields.forEach(field => {
             if (field.value.trim() === '') {
-                field.setCustomValidity('Este campo é obrigatório **');               
+                field.setCustomValidity('Este campo é obrigatório *');               
                 formIsValid = false;
             }
         });
@@ -40,9 +40,6 @@ const FormProject = ({ btnText, handleSubmit, projectData }) => {
         }
 
         console.log("p", project);
-        
-
-     
         handleSubmit(project)
     }
 
