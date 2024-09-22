@@ -14,67 +14,77 @@ import ServiceCard from '../services/serviceCard'
 import ProjectInfo from '../projectForm/infoProject'
 
 
+import { getDoc, doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { useCollectionRef } from '../../App'
+
 const Project = () => {
-    const { id } = useParams()
+    const idProject = useParams()
     const [project, setProject] = useState([])
     const [services, setServices] = useState([])
     const [showProjectForm, setShowProjectForm] = useState(false)
     const [showServiceForm, setShowServiceForm] = useState(false)
     const [message, setMessage] = useState('')
     const [type, setType] = useState()
+    console.log(idProject.id);
     
 
+
+    // console.log(services);
+    const fetchProject = async () => {
+        try {
+            const projectRef = doc(useCollectionRef, idProject.id)
+            const projectDoc = await getDoc(projectRef)
+
+            if (projectDoc.exists()) {
+                const exactProject = projectDoc.data()
+                setProject(exactProject)
+                setServices(exactProject.services)
+
+
+
+            } else {
+                console.log('Usuário não encontrado');
+            }
+        } catch (err) {
+            console.log('Erro ao atualizar o usuário:', err);
+        }
+    }
     useEffect(() => {
-        setTimeout(() => {
-            fetch(`https://api-server-costs.vercel.app/projects/${id}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }).then(resp => resp.json())
-                .then((data) => {
-                    setProject(data)
-                    setServices(data.services)
-                })
-                .catch(err => console.log(err))
-        }, 1000)
 
-    }, [id])
+        fetchProject()
+    }, [idProject.id])
 
-    const editProject = (project) => {
+    const editProject = async (project) => {
+
         if (project.budget < project.cost) {
 
             setMessage('O orçamento não pode ser menor que o custo do projeto')
             setType('error')
+            fetchProject()
             setTimeout(() => {
                 setMessage(false)
             }, 2500)
             return false
         }
 
-        fetch(`https://api-server-costs.vercel.app/projects/${project.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(project)
-        })
-            .then((resp) => resp.json())
-            .then((data) => {
-                setProject(data)
-                setServices(data.services)
-                setShowProjectForm(!showProjectForm)
-                setMessage('Projeto Atualizado!!!')
-                setType('sucess')
+        try {
+            const projectRef = doc(useCollectionRef, idProject.id)
+            await updateDoc(projectRef, project)
 
-                setTimeout(() => {
-                    setMessage(false)
-                }, 2500)
-            })
-            .catch(err => console.log(err, "errinho"))
+            setShowProjectForm(!showProjectForm)
+            setMessage('Projeto Atualizado!!!')
+            setType('sucess')
+            setProject(project)
+            setTimeout(() => {
+                setMessage(false)
+            }, 2500)
+        } catch {
+            setMessage('Erro ao atualizar o projeto')
+
+        }
     }
 
-    const createService = (project) => {
+    const createService = async (project) => {
         const lastService = project.services[project.services.length - 1]
 
         lastService.id = uuidv4()
@@ -82,7 +92,6 @@ const Project = () => {
         const lastServiceCost = lastService.cost
 
         const newCost = parseFloat(project.cost) + parseFloat(lastServiceCost)
-
 
         // Validação de Maximo valor
 
@@ -97,60 +106,72 @@ const Project = () => {
             return false
         }
 
+
         //  add custo total do serviço ao projeto
 
         project.cost = newCost
 
         // update project
-        fetch(`https://api-server-costs.vercel.app/projects/${project.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(project)
-        }).then((resp) => resp.json())
-            .then((data) => {
-                setShowServiceForm(!showServiceForm)
-                setMessage('Serviço Adicionado com sucesso')
-                setType('sucess')
+        const projectRef = doc(useCollectionRef, idProject.id)
 
-                setTimeout(() =>{
-                    setMessage(false)
-                },2500)
-            })
-            .catch((err) => console.log(err))
+        await updateDoc(projectRef, project)
+        // fetchProject()
+        setShowServiceForm(!showServiceForm)
+        setMessage('Serviço Adicionado com sucesso')
+        setType('sucess')
+        setTimeout(() => {
+            setMessage(false)
+        }, 2500)
+
     }
-    
 
-    const removeService = (id, cost) => {
+
+    const removeService = async (id, cost) => {
 
         const serviceUpdated = project.services.filter(
             (service) => service.id !== id
         )
 
-        const projectUpdated = project
+        const costUpdated = parseFloat(project.cost) - parseFloat(cost)
 
-        projectUpdated.services = serviceUpdated
-        projectUpdated.cost = parseFloat(projectUpdated.cost) - parseFloat(cost)
+        const projectUpdated = { ...project, services: serviceUpdated, cost: costUpdated }
 
-        fetch(`https://api-server-costs.vercel.app/projects/${projectUpdated.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(projectUpdated)
-        }).then(resp => resp.json())
-        .then((data) => {
+        try {
+            const projectRef = doc(useCollectionRef, idProject.id)
+            await updateDoc(projectRef, projectUpdated)
+
             setProject(projectUpdated)
             setServices(serviceUpdated)
+
             setMessage('serviço removido com sucesso!')
             setType('sucess')
 
-            setTimeout(() => {
-                setMessage(false)
-            }, 2500)
-        })
-        .catch((erro) => console.log(erro))
+        } catch (err) {
+            setMessage('Erro ao remover serviço')
+            console.log('Erro ao remover serviço', err);
+            
+        }
+
+        // await deleteDoc(projectRef)
+        // await updateDoc(projectRef, projectUpdated)
+
+
+        // fetch(`https://api-server-costs.vercel.app/projects/${projectUpdated.id}`, {
+        //     method: 'PATCH',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(projectUpdated)
+        // }).then(resp => resp.json())
+        //     .then((data) => {
+        //         setProject(projectUpdated)
+        //         setServices(serviceUpdated)
+
+        //         setTimeout(() => {
+        //             setMessage(false)
+        //         }, 2500)
+        //     })
+        //     .catch((erro) => console.log(erro))
 
 
     }
@@ -185,8 +206,8 @@ const Project = () => {
                                 <ProjectInfo
                                     category={project.category.name}
                                     budget={Number(project.budget).toFixed(2)}
-                                    costs={project.cost.toFixed(2)} 
-                                    totalAvailable={Number(project.budget - project.cost).toFixed(2) }/>
+                                    costs={project.cost.toFixed(2)}
+                                    totalAvailable={Number(project.budget - project.cost).toFixed(2)} />
                             ) : (
                                 <FormProject btnText='Concluir Edição' handleSubmit={editProject} projectData={project} />
                             )}
@@ -214,11 +235,10 @@ const Project = () => {
                                         id={service.id}
                                         name={service.name}
                                         cost={service.cost}
-                                        description={service.description}
+                                        description={service.comment}
                                         key={service.id}
                                         handleRemove={removeService}
                                     />
-                                    
                                 ))
                             )}
                         </Container>

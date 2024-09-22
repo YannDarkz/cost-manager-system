@@ -21,6 +21,8 @@ const ServiceForm = ({ textBtn, handleSubmit, projectData }) => {
     const handleChange = (e) => {
         const { name, value } = e.target
         setService({ ...service, [name]: value })
+        console.log("service", service);
+        
 
     }
 
@@ -45,8 +47,8 @@ const ServiceForm = ({ textBtn, handleSubmit, projectData }) => {
 
             <TextArea
                 text="Descriação do Serviço"
-                name="description"
-                placeHolder="Insra o custo do serviço opcional"
+                name="comment"
+                placeHolder="Insira o custo do serviço opcional"
                 handleOnChange={handleChange} />
             <SubmitButton text={textBtn} />
         </form>
