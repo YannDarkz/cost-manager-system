@@ -15,8 +15,6 @@ const NewProject = () => {
     const createPost = async (project) => {
         try {
             // Initialize cost and services
-            const idProject = uuidv4()
-            project.id = uuidv4()
             project.cost = 0;
             project.services = [];
             const docRef = addDoc(useCollectionRef, project);
