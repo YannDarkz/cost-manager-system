@@ -1,11 +1,16 @@
 import { useLocation } from "react-router-dom"
-import { useState, useEffect} from "react"
+import { useState, useEffect } from "react"
 import Message from "../layout/message"
 import styles from "./projects.module.css"
 import LinkButton from "../layout/linkButton"
 import Container from "../layout/container"
 import Loading from "../layout/Loading"
 import ProjectCard from "../projectForm/ProjectCard"
+
+import { getDocs, doc, deleteDoc } from "firebase/firestore"
+import { useCollectionRef } from "../../App"
+
+
 
 const Projects = () => {
 
@@ -19,41 +24,46 @@ const Projects = () => {
         message = location.state.message
         setTimeout(() => {
             message = ''
-        },2500)
+        }, 2500)
 
     }
 
     useEffect(() => {
-        setTimeout(() =>{
-            fetch('https://api-server-costs.vercel.app/projects', {
-            method: 'GET' ,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-            .then((resp) => resp.json())
-            .then((data) => {
-                setProjects(data)
-                setRemoveLoading(true)
-            })
-            .catch((err) => console.log(err))
-        },500)
-    },[])
+        
+        fetchProjects()
+    }, [])
 
-    const removeProject = (id) => {
+    const fetchProjects = async () => {
+        try {
+            const response = await getDocs(useCollectionRef)
+            const data = response.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+            console.log("dates", data);
+            setProjects(data)
+
+        } catch (err) {
+            console.log(err);
+
+        }
+    }
+
+    // console.log("projects", projectsF);
+
+    if (projects.length === 0) {
+        setTimeout(() => {
+            setRemoveLoading(true)
+        }, 2000)
+    }
+
+
+    const removeProject = async (id) => {
         setProjectMessage('')
+        console.log(id);
+        
 
-        fetch(`https://api-server-costs.vercel.app/projects/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        }).then((resp) => resp.json())
-        .then(() => {
-            setProjects(projects.filter((project) => project.id !== id))
-            setProjectMessage('Projeto removido com sucesso!')
-        })
-        .catch((erro) => console.log(erro))
+        const projectDoc = doc(useCollectionRef, id)
+        await deleteDoc(projectDoc)
+        await fetchProjects()
+        setProjectMessage('Projeto removido com sucesso!')
     }
 
     return (
@@ -66,20 +76,20 @@ const Projects = () => {
             {projectMessage && <Message type="sucess" msg={projectMessage} />}
             <Container customClass="column_center">
                 {projects.length > 0 &&
-                projects.map((project) => (
-                <ProjectCard
-                 name={project.name}
-                 id={project.id}
-                 budget={project.budget}
-                 category={project.category.name}
-                 key={project.id} 
-                 handleRemove={removeProject}/>      
-                ))}
+                    projects.map((project) => (
+                        <ProjectCard
+                            name={project.name}
+                            id={project.id}
+                            budget={project.budget}
+                            category={project.category.name}
+                            key={project.id}
+                            handleRemove={removeProject} />
+                    ))}
                 {removeLoading === false && <Loading />}
-                {removeLoading && projects.length === 0 && (
+                {projects.length === 0 && (
                     <p>Não há Projetos cadastrados</p>
                 )}
-            </Container> 
+            </Container>
         </div>
     )
 }

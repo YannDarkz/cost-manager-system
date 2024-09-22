@@ -26,7 +26,6 @@ const FormProject = ({ btnText, handleSubmit, projectData }) => {
     const submit = (e) => {
         e.preventDefault()
         const requiredFields = document.querySelectorAll('[required]');
-        console.log(requiredFields)
         let formIsValid = true;
         requiredFields.forEach(field => {
             if (field.value.trim() === '') {
@@ -39,7 +38,6 @@ const FormProject = ({ btnText, handleSubmit, projectData }) => {
             return;
         }
 
-        console.log("p", project);
         handleSubmit(project)
     }
 

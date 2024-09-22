@@ -2,7 +2,7 @@
   "projects": [
     {
       "id": "afde",
-      "name": "Blog",
+      "name": "Bldog",
       "budget": "12",
       "category": {
         "id": "1",
