@@ -94,7 +94,6 @@ const Project = () => {
         const newCost = parseFloat(project.cost) + parseFloat(lastServiceCost)
 
         // Validação de Maximo valor
-
         if (newCost > parseFloat(project.budget)) {
             setMessage('Orçamento ultrapassado, verifique o valor do serviço')
             setType('error')
@@ -105,7 +104,6 @@ const Project = () => {
             }, 2500)
             return false
         }
-
 
         //  add custo total do serviço ao projeto
 
